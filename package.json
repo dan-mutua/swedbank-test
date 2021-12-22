@@ -18,7 +18,11 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "google-libphonenumber": "^3.2.25",
+    "intl-tel-input": "^17.0.3",
     "rxjs": "~7.4.0",
+    "scripts": "file:node_modules/intl-tel-input/build/js/intlTelInput.min.js",
+    "styles": "file:node_modules/intl-tel-input/build/css/intlTelInput.css",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

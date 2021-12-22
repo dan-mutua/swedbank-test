@@ -7,9 +7,116 @@
     <li>Money is transferred to the account immediately after the conclusion of the contract.</li>
     <li>It is possible to make early repayments without any additional fees.</li>
 </ul>
-<button type="button"><a src="">Fill in application</a></button>
+
 <p>Please note, that by using financial services you assume financial obligations. Improper execution of financial <br> obligations
      may adversely affect your credit history and raise the cost of borrowing,<br> and it can also cause initiation of enforced recovery.</p>
 
 
 </div>    
+
+
+     <div class="container">
+        <div [hidden]="submitted">
+          <h1>Loan Form</h1>
+          <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+            
+                <div class="form-group" id="input"> 
+                <label for="name">Full Name</label>
+                <input type="text" class="form-control" id="fullname"
+                        required
+                        [(ngModel)]="model.fullname" name="fullname"
+                        #name="ngModel">
+               
+                <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                        class="alert">
+                <div *ngIf="name.errors?.['required']">
+                            Name is required.
+                </div>
+                <div *ngIf="name.errors?.['minlength']">
+                            Name must be at least 4 characters long.
+                </div>
+                </div>
+                    
+                    
+                </div>
+              
+            
+                <div class="form-group" id="input">
+                    <label for="loanterm">Personal code: </label>
+                    <input type="number" class="form-control" id="persona-code"
+                        [(ngModel)]="model.personalcode" name="persona-code" minlength="4" required>
+                </div>
+                <div class="form-group" id="input">
+                    <label for="phonenumber">Phone Number</label> 
+                    <input type="number" class="form-control" id="phon-number"
+                    [(ngModel)]="model.phonenumber"name="phonenumber" required>
+                    
+                </div>
+      
+                <div class="form-group" id="input">
+                <label for="loanterm">Loan term: </label>
+                <input type="number" class="form-control" id="loan-term"
+                        [(ngModel)]="model.loanterm" name="loan-term" maxlength="2" required>
+                </div>
+                <div class="form-group" id="input">
+                    <label for="Occupation">Occupation: </label>
+                    <input type="text" class="form-control" id="occupation"
+                        [(ngModel)]="model.occupation" name="occupation" required>
+                </div>
+      
+                <div class="form-group" id="input" >
+                    <label for="eduation">Education  : </label>
+                    <select name="eduction" class="form-control" id="education" [(ngModel)]="model.education" required>
+                        <option value="Basic-education">Basic education</option>
+                        <option value="High-school">High School</option>
+                        <option selected value="Under-graduate">Under-graduate</option>
+                        <option value="graduate">Graduate</option>
+                    </select>
+                    
+                </div>
+      
+                <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+                
+         
+          
+           
+            </form>
+        </div>
+      
+        <div [hidden]="!submitted">
+            <h2>You submitted the following:</h2>
+            <div class="row" id="results">
+               <div class="col-xs-3">Full Name :</div>
+               <div class="col-xs-9">{{ model.fullname }}</div>
+            </div>
+            <div class="row" id="results">
+                <div class="col-xs-3">Personal Code :</div>
+                <div class="col-xs-9">{{ model.personalcode }}</div>
+             </div>
+             <div class="row" id="results">
+                <div class="col-xs-3">Phone Number :</div>
+                <div class="col-xs-9">{{ model.phonenumber }}</div>
+             </div>
+            <div class="row" id="results">
+               <div class="col-xs-3">Loan term :</div>
+               <div class="col-xs-9">{{ model.loanterm }}</div>
+            </div>
+            <div class="row" id="results">
+                <div class="col-xs-3">Occupation: </div>
+                <div class="col-xs-9">{{ model.occupation }}</div>
+            </div>
+            <div class="row" id="results">
+                <div class="col-xs-3">Education : </div>
+                <div class="col-xs-9">{{ model.education }}</div>
+            </div>
+          
+          
+          <br>
+          <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+        </div>
+      </div>
+      
+     
+      <hr>
+     
+      
